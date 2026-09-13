@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shailesh Gupta — Quality Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sans:'IBM Plex Sans',-apple-system,sans-serif;
+    --display:'Sora',var(--sans);
+    --mono:'IBM Plex Mono',monospace;
+  }
+  html[data-theme="light"]{
+    --bg:#f6f5fb;
+    --bg-panel:#ffffff;
+    --bg-ink:#171334;
+    --bg-ink-2:#241e4d;
+    --text:#1b1a2b;
+    --text-soft:#605d78;
+    --line:#e3e0f2;
+    --line-ink:#3a3468;
+    --accent-1:#5b4fe8;
+    --accent-1-soft:#ece9fd;
+    --accent-2:#12b886;
+    --accent-2-soft:#e2f7ef;
+    --accent-3:#f5a623;
+    --accent-3-soft:#fdf0d9;
+    --accent-4:#ff6b6b;
+    --accent-4-soft:#ffe8e8;
+    --shadow: 0 18px 40px -22px rgba(40,30,90,0.35);
+  }
+  html[data-theme="dark"]{
+    --bg:#100e1e;
+    --bg-panel:#181630;
+    --bg-ink:#0b0a1a;
+    --bg-ink-2:#191540;
+    --text:#f1f0fb;
+    --text-soft:#a7a3c9;
+    --line:#2c2856;
+    --line-ink:#332c66;
+    --accent-1:#9b90ff;
+    --accent-1-soft:#241f52;
+    --accent-2:#38e2ab;
+    --accent-2-soft:#123328;
+    --accent-3:#ffbf5c;
+    --accent-3-soft:#3a2c12;
+    --accent-4:#ff8a8a;
+    --accent-4-soft:#3a1e24;
+    --shadow: 0 18px 40px -18px rgba(0,0,0,0.6);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    transition:background .4s ease, color .4s ease;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 28px;}
+  ::selection{background:var(--accent-1);color:#fff;}
+
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative;
+    background:var(--bg-ink);
+    color:#fff;
+    padding:0 0 44px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line-ink);
+  }
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(60px);
+    opacity:.55;
+    z-index:0;
+    animation:float 12s ease-in-out infinite;
+  }
+  .blob-1{width:360px;height:360px;background:var(--accent-1);top:-140px;right:-90px;}
+  .blob-2{width:260px;height:260px;background:var(--accent-2);bottom:-120px;left:-80px;animation-delay:-4s;}
+  @keyframes float{
+    0%,100%{transform:translateY(0) translateX(0);}
+    50%{transform:translateY(24px) translateX(-14px);}
+  }
+
+  .navbar{
+    position:relative;z-index:2;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 0;
+    font-family:var(--mono);
+    font-size:13px;
+    color:#c3c0e8;
+  }
+  .status{display:flex;align-items:center;gap:8px;}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent-2);display:inline-block;box-shadow:0 0 0 4px rgba(18,184,134,.18);}
+  .theme-toggle{
+    display:flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18);
+    color:#fff;
+    padding:7px 14px;
+    border-radius:999px;
+    cursor:pointer;
+    font-family:var(--mono);
+    font-size:12.5px;
+    transition:background .25s ease, transform .15s ease;
+  }
+  .theme-toggle:hover{background:rgba(255,255,255,.16);}
+  .theme-toggle:active{transform:scale(.96);}
+  .theme-toggle .icon{font-size:14px;}
+
+  .hero-body{position:relative;z-index:2;padding-top:20px;}
+  h1.name{
+    font-family:var(--display);
+    font-weight:800;
+    font-size:clamp(38px,7vw,58px);
+    line-height:1.04;
+    margin:0 0 12px;
+    background:linear-gradient(90deg,#ffffff, #cfc9ff 70%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .role-line{
+    font-size:19px;
+    color:#c9c6ea;
+    margin:0 0 30px;
+    max-width:540px;
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:40px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:14.5px;
+    padding:12px 20px;
+    border-radius:10px;
+    text-decoration:none;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .2s ease, opacity .2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{
+    background:linear-gradient(120deg, var(--accent-1), #8b7cff);
+    color:#fff;
+    box-shadow:0 14px 30px -14px rgba(91,79,232,.7);
+  }
+  .btn-ghost{
+    background:rgba(255,255,255,.06);
+    color:#fff;
+    border-color:rgba(255,255,255,.25);
+  }
+  .btn-ghost:hover{background:rgba(255,255,255,.13);}
+
+  .scorecard{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--line-ink);
+  }
+  .scorecard div{padding:20px 18px 4px 0;border-right:1px solid var(--line-ink);}
+  .scorecard div:last-child{border-right:none;}
+  .scorecard .num{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:28px;
+    color:#fff;
+  }
+  .scorecard .label{font-size:12.5px;color:#a19dcf;margin-top:4px;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:56px 0;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .section-head{
+    display:flex;justify-content:space-between;align-items:baseline;
+    margin-bottom:30px;gap:16px;
+  }
+  h2.section-title{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:27px;
+    margin:0;
+    position:relative;
+    padding-left:18px;
+  }
+  h2.section-title::before{
+    content:"";
+    position:absolute;left:0;top:6px;bottom:6px;
+    width:5px;border-radius:3px;
+    background:linear-gradient(180deg,var(--accent-1),var(--accent-2));
+  }
+  .section-tag{font-family:var(--mono);font-size:12.5px;color:var(--text-soft);}
+
+  /* ---------- ABOUT ---------- */
+  .about-text{font-size:17px;max-width:660px;}
+  .about-text + .about-text{margin-top:14px;}
+
+  /* ---------- EXPERIENCE ---------- */
+  .role{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:20px;
+    padding:24px 0 24px 20px;
+    border-top:1px solid var(--line);
+    border-left:3px solid var(--role-color, var(--accent-1));
+    transition:background .25s ease;
+  }
+  .role:first-child{border-top:none;}
+  .role:hover{background:var(--accent-1-soft);}
+  .role-dates{font-family:var(--mono);font-size:13px;color:var(--text-soft);padding-top:3px;}
+  .role-org{font-family:var(--display);font-size:20px;font-weight:700;margin:0 0 2px;}
+  .role-title{font-size:14.5px;color:var(--text-soft);margin:0 0 10px;}
+  .role ul{margin:0;padding-left:18px;}
+  .role li{margin-bottom:6px;font-size:15px;}
+  .badge{
+    display:inline-block;font-family:var(--mono);font-size:11.5px;
+    padding:2px 9px;border-radius:999px;
+    background:var(--accent-2-soft);color:var(--accent-2);
+    margin-left:8px;vertical-align:middle;
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skill-groups{display:grid;grid-template-columns:1fr 1fr;gap:36px;}
+  .skill-group h3{font-family:var(--display);font-size:15.5px;font-weight:700;margin:0 0 14px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:9px;}
+  .pill{
+    font-size:13.5px;
+    padding:8px 14px;
+    border-radius:999px;
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    box-shadow:var(--shadow);
+    transition:transform .15s ease, border-color .2s ease;
+  }
+  .pill:hover{transform:translateY(-2px);border-color:var(--accent-1);}
+  .skill-group:nth-child(1) .pill{color:var(--accent-1);}
+  .skill-group:nth-child(2) .pill{color:var(--accent-2);}
+  @media (max-width:600px){.skill-groups{grid-template-columns:1fr;}}
+
+  /* ---------- ACHIEVEMENTS ---------- */
+  .achv-intro{font-size:15.5px;color:var(--text-soft);max-width:640px;margin:0 0 30px;}
+  .achv-card{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:24px;
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:18px;
+    margin-bottom:22px;
+    box-shadow:var(--shadow);
+    transition:transform .2s ease;
+  }
+  .achv-card:hover{transform:translateY(-3px);}
+  .achv-card img{border-radius:10px;object-fit:cover;width:100%;height:100%;}
+  .achv-text h3{
+    font-family:var(--display);font-size:17px;font-weight:700;margin:0 0 8px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .achv-text p{font-size:14.8px;margin:0;color:var(--text);}
+  .achv-tag{
+    font-family:var(--mono);font-size:11px;
+    padding:2px 9px;border-radius:999px;
+  }
+  .tag-fraud{background:var(--accent-4-soft);color:var(--accent-4);}
+  .tag-fix{background:var(--accent-2-soft);color:var(--accent-2);}
+  .tag-cx{background:var(--accent-3-soft);color:var(--accent-3);}
+  @media (max-width:640px){.achv-card{grid-template-columns:1fr;}}
+
+  .achv-note{
+    font-size:14px;color:var(--text-soft);
+    border:1px dashed var(--line);
+    border-radius:12px;
+    padding:14px 16px;
+    font-family:var(--mono);
+    margin-top:6px;
+  }
+
+  /* ---------- EDUCATION ---------- */
+  .edu-row{
+    display:grid;grid-template-columns:110px 1fr;gap:16px;
+    padding:14px 0;border-top:1px solid var(--line);font-size:15px;
+  }
+  .edu-row:first-child{border-top:none;}
+  .edu-year{font-family:var(--mono);color:var(--accent-1);}
+
+  /* ---------- CREATOR ---------- */
+  .creator-panel{
+    background:linear-gradient(135deg,var(--bg-ink),var(--bg-ink-2));
+    color:#fff;padding:36px;border-radius:20px;position:relative;overflow:hidden;
+  }
+  .creator-panel .section-tag{color:#a19dcf;}
+  .creator-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;margin-bottom:14px;}
+  .creator-head h2{color:#fff;margin:0;font-family:var(--display);font-size:24px;}
+  .creator-handle{font-family:var(--mono);color:var(--accent-2);font-size:14px;}
+  .creator-text{color:#c9c6ea;font-size:15px;max-width:560px;margin:0 0 22px;}
+  .frame-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .frame{
+    border-radius:14px;padding:10px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.14);
+  }
+  .frame .slot{
+    aspect-ratio:4/5;border-radius:8px;
+    border:1.5px dashed rgba(255,255,255,.35);
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    color:#a19dcf;font-family:var(--mono);font-size:12px;padding:12px;
+  }
+  @media (max-width:600px){.frame-row{grid-template-columns:1fr;}}
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  footer{background:var(--bg-ink);color:#c9c6ea;padding:48px 0 32px;}
+  footer h2{font-family:var(--display);color:#fff;font-size:26px;margin:0 0 18px;}
+  .contact-list{display:flex;flex-wrap:wrap;gap:22px;font-family:var(--mono);font-size:14px;margin-bottom:28px;}
+  .contact-list a{text-decoration:none;border-bottom:1px solid var(--accent-1);padding-bottom:2px;transition:color .2s ease;}
+  .contact-list a:hover{color:var(--accent-2);border-color:var(--accent-2);}
+  .foot-note{font-size:12.5px;color:#77739e;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="blob blob-1"></span>
+  <span class="blob blob-2"></span>
+  <div class="wrap">
+    <nav class="navbar">
+      <div class="status"><span class="dot"></span> Open to Quality Analyst / QA roles</div>
+      <button class="theme-toggle" id="themeToggle" type="button">
+        <span class="icon" id="themeIcon">🌙</span><span id="themeLabel">Night</span>
+      </button>
+    </nav>
+    <div class="hero-body">
+      <h1 class="name">Shailesh Gupta</h1>
+      <p class="role-line">Quality Analyst — Chat &amp; Voice Audits, RCA and Compliance Reporting across BAU, Hygiene and CEO Escalation processes.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="Shailesh_Gupta_Resume.pdf" download>⬇ Download Resume</a>
+        <a class="btn btn-ghost" href="#achievements">See Achievements</a>
+      </div>
+      <div class="scorecard">
+        <div><div class="num" data-count="2" data-suffix="+ Yrs">0</div><div class="label">Quality &amp; Audit Experience</div></div>
+        <div><div class="num" data-count="3" data-suffix="">0</div><div class="label">Organisations Audited</div></div>
+        <div><div class="num" data-count="23" data-suffix="K+">0</div><div class="label">Community Reach (@techmodessg)</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="about" class="reveal">
+    <div class="section-head">
+      <h2 class="section-title">About</h2>
+      <span class="section-tag">01 — Profile</span>
+    </div>
+    <p class="about-text">Detail-oriented and quick-learning Quality Analyst with hands-on experience in BAU audits, root cause analysis, CEO escalations, audit &amp; compliance, and process improvement. Proven ability to identify quality gaps, drive SOP enhancements, and improve operational performance.</p>
+    <p class="about-text">Currently working as an External Audit Quality Auditor at Wyzmindz, evaluating Chat and Voice interactions for compliance and accuracy — while separately building a 23K+ tech content brand on Instagram.</p>
+  </section>
+
+  <section id="experience" class="reveal">
+    <div class="section-head">
+      <h2 class="section-title">Experience</h2>
+      <span class="section-tag">02 — Timeline</span>
+    </div>
+
+    <div class="role" style="--role-color:var(--accent-2)">
+      <div class="role-dates">Aug 2025 — Present</div>
+      <div>
+        <p class="role-org">Wyzmindz Solutions <span class="badge">Current</span></p>
+        <p class="role-title">Quality Auditor — External Audit</p>
+        <ul>
+          <li>Conduct Chat and Voice process audits across RCA, BAU, and CEO Escalation cases</li>
+          <li>Analyse customer interactions to identify process gaps and compliance deviations</li>
+          <li>Prepare actionable feedback and drive continuous improvement in customer experience</li>
+          <li>Maintain accuracy and integrity across external audit evaluations and reporting</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="role" style="--role-color:var(--accent-1)">
+      <div class="role-dates">Dec 2024 — Aug 2025</div>
+      <div>
+        <p class="role-org">Reboot XP</p>
+        <p class="role-title">Senior Customer Support Executive / SME (QA on auxiliary basis)</p>
+        <ul>
+          <li>Conducted Audit &amp; Compliance (ANC) audits, evaluating agent interactions against quality standards</li>
+          <li>Performed Hygiene Audits — call drops, language proficiency, and profanity checks</li>
+          <li>Supported quality control by identifying gaps and driving team adherence to SOPs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="role" style="--role-color:var(--accent-3)">
+      <div class="role-dates">Apr 2024 — Nov 2024</div>
+      <div>
+        <p class="role-org">iEnergizer</p>
+        <p class="role-title">Customer Support Executive → Senior CSE → Subject Matter Expert</p>
+        <ul>
+          <li>Progressed from CSE to Senior CSE, then into an SME role within the same process</li>
+          <li>Continued as SME on the same process after it transitioned to Reboot XP</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="reveal">
+    <div class="section-head">
+      <h2 class="section-title">Skills</h2>
+      <span class="section-tag">03 — Toolkit</span>
+    </div>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h3>Quality &amp; Audit</h3>
+        <div class="pill-row">
+          <span class="pill">Chat &amp; Voice Auditing</span>
+          <span class="pill">Root Cause Analysis</span>
+          <span class="pill">BAU &amp; Hygiene Audits</span>
+          <span class="pill">CEO Escalation Audits</span>
+          <span class="pill">SOP Compliance</span>
+          <span class="pill">Calibration Sessions</span>
+          <span class="pill">Coaching &amp; Feedback</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Tools &amp; Reporting</h3>
+        <div class="pill-row">
+          <span class="pill">Advanced Excel</span>
+          <span class="pill">Google Sheets</span>
+          <span class="pill">Power BI</span>
+          <span class="pill">Report Automation</span>
+          <span class="pill">Data Analysis</span>
+          <span class="pill">Stakeholder Management</span>
+          <span class="pill">AI Productivity Tools</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements" class="reveal">
+    <div class="section-head">
+      <h2 class="section-title">Achievements</h2>
+      <span class="section-tag">04 — Case Studies</span>
+    </div>
+    <p class="achv-intro">Fraud-prevention and process-improvement work recognised by the client and featured in the company newsletter — part of 30+ process-improvement suggestions submitted, several of which have gone into implementation for the client and Flipkart.</p>
+
+    <div class="achv-card">
+      <img src="achievement-1.jpg" alt="Kudos Corner feature on pricing fraud detection">
+      <div class="achv-text">
+        <h3>Grocery Pricing Fraud — Revenue Recovered <span class="achv-tag tag-fraud">Fraud Prevention</span></h3>
+        <p>Flagged a pattern on Flipkart Grocery where products were being manipulated in listing/pricing to be received far below their real value — cases ranging from items priced ₹100–150 being used to receive goods worth ₹4,000–5,000. The client investigated, confirmed the modus operandi and individual involved, recovered the leaked revenue, and initiated legal action. Total leakage identified: <strong>₹1,07,393 across 162 units</strong>, including a single item worth ₹1,18,994 sold for just ₹11,601.</p>
+      </div>
+    </div>
+
+    <div class="achv-card">
+      <img src="achievement-2.jpg" alt="WyzMindz feature on AI-generated image refund fraud">
+      <div class="achv-text">
+        <h3>AI-Generated Image Refund Fraud <span class="achv-tag tag-fix">Preventive Fix</span></h3>
+        <p>As fake-refund claims using AI-generated product photos kept rising and became a growing concern for Flipkart, proposed restricting refund proof to <strong>live camera capture only</strong> — removing the gallery-upload option so AI-generated images can no longer be submitted. The client acknowledged the suggestion and shared it forward for implementation.</p>
+      </div>
+    </div>
+
+    <div class="achv-card">
+      <img src="achievement-3.jpg" alt="WyzMindz feature on order cancellation and re-ship suggestion">
+      <div class="achv-text">
+        <h3>Order Cancellations — Re-ship/Re-order Fix <span class="achv-tag tag-cx">Customer Experience</span></h3>
+        <p>Studied a pattern of orders getting cancelled without customers being fully aware, leaving advisors to manage the resulting escalations. Proposed a <strong>Re-ship / Re-order</strong> option so customers get more control instead of a plain cancellation — reducing escalations and improving overall satisfaction. Acknowledged by the client and forwarded to the product team.</p>
+      </div>
+    </div>
+
+    <div class="achv-note">
+      + Case study: identified a Proof-of-Delivery (POD) gap in grocery orders — delivery agents would photograph the full basket for POD but hold back the highest-value item (e.g. ghee) before handover, leaving agents unable to approve genuine return requests since the POD photo showed the item as delivered. Documented and highlighted for the client.
+    </div>
+  </section>
+
+  <section id="education" class="reveal">
+    <div class="section-head">
+      <h2 class="section-title">Education</h2>
+      <span class="section-tag">05 — Background</span>
+    </div>
+    <div class="edu-row"><div class="edu-year">2026</div><div>BA — Tilka Manjhi Bhagalpur University</div></div>
+    <div class="edu-row"><div class="edu-year">2023</div><div>KYP Certification — Bihar Skill Development Mission (BS‑CIT, BS‑CLS, BS‑CSS)</div></div>
+    <div class="edu-row"><div class="edu-year">2019</div><div>12th — Bihar School Examination Board</div></div>
+    <div class="edu-row"><div class="edu-year">2017</div><div>10th — Bihar School Examination Board</div></div>
+  </section>
+
+  <section id="creator" class="reveal">
+    <div class="creator-panel">
+      <div class="creator-head">
+        <h2>Content Creator</h2>
+        <span class="creator-handle">@techmodessg</span>
+      </div>
+      <p class="creator-text">Alongside QA, I run a tech content page focused on AI tools and tech hacks — grown to 23K+ followers on Instagram, with an ongoing brand collaboration pipeline.</p>
+      <div class="frame-row">
+        <div class="frame"><div class="slot">Creator photo 1<br>(swap this file)</div></div>
+        <div class="frame"><div class="slot">Creator photo 2<br>(swap this file)</div></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <div class="contact-list">
+      <a href="mailto:shaileshkumar993993@gmail.com">shaileshkumar993993@gmail.com</a>
+      <a href="tel:+919608888678">+91 96088 88678</a>
+      <a href="https://www.linkedin.com/in/shailesh-gupta-2aa935195" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="Shailesh_Gupta_Resume.pdf" download>Download Resume</a>
+    </div>
+    <div class="foot-note">Noida, Uttar Pradesh — India</div>
+  </div>
+</footer>
+
+<script>
+  // Theme toggle
+  const root = document.documentElement;
+  const toggle = document.getElementById('themeToggle');
+  const icon = document.getElementById('themeIcon');
+  const label = document.getElementById('themeLabel');
+  toggle.addEventListener('click', () => {
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    icon.textContent = isDark ? '🌙' : '☀️';
+    label.textContent = isDark ? 'Night' : 'Day';
+  });
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  revealEls.forEach(el => io.observe(el));
+
+  // Count-up numbers
+  const counters = document.querySelectorAll('[data-count]');
+  const countIo = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.getAttribute('data-count'), 10);
+      const suffix = el.getAttribute('data-suffix') || '';
+      let cur = 0;
+      const step = Math.max(1, Math.round(target / 30));
+      const tick = () => {
+        cur += step;
+        if(cur >= target){ el.textContent = target + suffix; return; }
+        el.textContent = cur + suffix;
+        requestAnimationFrame(tick);
+      };
+      tick();
+      countIo.unobserve(el);
+    });
+  }, {threshold:0.4});
+  counters.forEach(el => countIo.observe(el));
+</script>
+
+</body>
+</html>
